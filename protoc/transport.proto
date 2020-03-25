@@ -14,7 +14,9 @@ service Upload {
 message UploadFileReq {
     string name = 1;
 
-    bytes file = 2 ;
+    string tag = 2;
+
+    bytes file = 3 ;
 }
 
 message UploadFileResp {
@@ -24,6 +26,8 @@ message UploadFileResp {
 
 message DownloadFileReq {
     string path = 1;
+
+    string tag = 2 ;
 }
 
 message DownloadFileResp {

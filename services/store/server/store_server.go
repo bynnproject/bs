@@ -8,6 +8,7 @@ import (
 	"net"
 	pb "bs/protoc"
 	"google.golang.org/grpc"
+	"bs/dao/entity"
 )
 
 type UploadFileApp struct {
@@ -28,9 +29,6 @@ func (app *UploadFileApp)UploadFile(stream pb.Upload_UploadFileServer) error {
 		return err
 	}
 
-	//fileName := req.Name
-	fmt.Println(app.SavePath + "ttt.txt")
-	fmt.Println(app)
 	//log.Fatal("file name is %s" , fileName)
 	file := req.File
 	err = ioutil.WriteFile( app.SavePath + req.Name , file , 0644)
@@ -38,7 +36,15 @@ func (app *UploadFileApp)UploadFile(stream pb.Upload_UploadFileServer) error {
 	if err != nil {
 		log.Println(err)
 	}
-
+	_, err = (&entity.Project{
+		Name:      req.Name,
+		SavePath:  app.SavePath,
+		LngId:     0,
+		Tag:       req.Tag,
+	}).Insert()
+	if err != nil {
+		log.Println(err)
+	}
 	return nil
 }
 

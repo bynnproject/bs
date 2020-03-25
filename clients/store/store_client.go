@@ -37,7 +37,6 @@ func (cli *UploadFileClient)UploadFile(filePath string , fileName string)  error
 		log.Fatal(err)
 		return err
 	}
-
 	// /Users/bynn/uploadFileTest.txt
 
 	err = req.Send(&pb.UploadFileReq{
@@ -85,7 +84,6 @@ func (cli *UploadFileClient)DownloadFile(source string , target string , tag str
 		log.Println(err)
 		return err
 	}
-
 
 	return nil
 }
