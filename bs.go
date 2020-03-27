@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bs/pkg/log_tail"
 	"fmt"
+	"bs/pkg/info"
 	"log"
 	"os"
 	"bs/cmd"
@@ -10,7 +12,7 @@ import (
 )
 
 func main() {
-	Store()
+	Info()
 }
 
 func Store()  {
@@ -22,14 +24,6 @@ func Store()  {
 }
 
 func Dao()  {
-	//x := dao.NewEngine()
-	//lng := entity.Lng{
-	//	LngName: "GO",
-	//}
-	//aff , err := x.Insert(lng)
-	//if err != nil {
-	//	log.Println(err)
-	//}
 	l := &entity.Project{Name:"LVXIAOLUO"}
 	l.Insert()
 	fmt.Println(l.FindByName())
@@ -38,6 +32,21 @@ func Dao()  {
 	fmt.Println(l.FindByName())
 
 	//log.Println(aff)
+}
+
+func Log()  {
+	log_tail.NewTail("/Users/bynn/bstest1.txt")
+}
+
+func Info()  {
+	info.GetHosts()
+	fmt.Println(info.GetCpu())
+	fmt.Println(info.GetDisk())
+	fmt.Println(info.GetHosts())
+	fmt.Println(info.GetMem())
+	fmt.Println(info.GetProcessInfo())
+
+
 }
 
 type Member struct {

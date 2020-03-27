@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package protoc ;
+
+
+service info{
+
+}
+
+message InfoReq {
+    string msg = 1;
+}
+
+message InfoResp {
+    HostsInfo Host = 1;
+    CpuInfo Cpu = 2;
+    MemoryInfo Mem = 3;
+    DiskInfo Disk = 4;
+    ProcessInfo Process = 5;
+    ConnInfo Conn = 6;
+}
+
+
+message HostsInfo {
+
+}
+
+message CpuInfo {
+
+}
+
+
+message MemoryInfo {
+
+}
+
+
+message DiskInfo {
+
+}
+
+message ProcessInfo {
+
+}
+
+message ConnInfo {
+
+}
