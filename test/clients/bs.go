@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	InfoServer()
+	InfoClient()
 }
 
 func InfoServer()  {
@@ -26,7 +26,12 @@ func InfoServer()  {
 
 func InfoClient()  {
 	cli := infocli.InfoClient{Address:"127.0.0.1:8088"}
-	cli.GetInfo()
+	err ,info := cli.GetInfo()
+	if err ==nil {
+		fmt.Println(info)
+	}else {
+		fmt.Println("err %v " , err)
+	}
 }
 
 func Store()  {

@@ -11,6 +11,8 @@ type Project struct {
 
 	Tag string `xorm:"char(50) not null"`
 
+
+
 }
 
 func (p *Project)Insert() (int64 , error) {
@@ -33,7 +35,7 @@ func (p *Project)UpdateById() (int64 , error) {
 
 func (p *Project)All() []Project {
 	all := make([]Project , 0)
-	NewEngine().Find(all)
+	NewEngine().Find(&all)
 	return all
 }
 

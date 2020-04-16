@@ -4,11 +4,11 @@ import (
 	"github.com/shirou/gopsutil/host"
 )
 
-func GetHosts() *host.InfoStat {
+func GetHosts() HostInfo {
 	info, _ := host.Info()
-	return info
+	return HostInfo{info}
 }
 
 type HostInfo struct {
-	host.InfoStat
+	Host *host.InfoStat
 }

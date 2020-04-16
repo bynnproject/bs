@@ -2,10 +2,14 @@ package info
 
 import "github.com/shirou/gopsutil/disk"
 
-func GetDisk() ([]disk.PartitionStat , map[string]disk.IOCountersStat) {
+func GetDisk() AllDiskInfo {
 	info, _ := disk.Partitions(true)  //所有分区
 	info3, _ := disk.IOCounters()  //所有硬盘的io信息
-	return info , info3
+
+	return AllDiskInfo{
+		info ,
+		info3,
+	}
 }
 
 type DiskInfo struct {
@@ -14,4 +18,9 @@ type DiskInfo struct {
 
 type IOCountersInfo struct {
 	disk.IOCountersStat
+}
+
+type AllDiskInfo struct {
+	Info []disk.PartitionStat
+	Ioinfo map[string]disk.IOCountersStat
 }

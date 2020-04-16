@@ -10,6 +10,8 @@ type ProjectIp struct {
 	PathId int64 `xorm:"int(10)  not null  "`
 
 	Tag string `xorm:"char(50) not null"`
+
+	NodeId int64 `xorm:"int(10) "`
 }
 
 func (p *ProjectIp)Insert() (int64 , error) {
@@ -44,4 +46,13 @@ func (p *ProjectIp)FindByProjectId() ([]ProjectIp , error) {
 
 func (p *ProjectIp)Delete()  {
 
+}
+
+func (p *ProjectIp)GetByNodeId() ([]ProjectIp , error) {
+	all := make([]ProjectIp , 0)
+	err := NewEngine().Where("node_id = ?" ,  p.ProjectId).Find(&all)
+	if err != nil {
+		return nil , err
+	}
+	return all , nil
 }

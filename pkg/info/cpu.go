@@ -1,16 +1,16 @@
 package info
 
 import (
-	"fmt"
 	"github.com/shirou/gopsutil/cpu"
 )
 
-func GetCpu() []cpu.InfoStat {
+func GetCpu() CpuInfo {
 	info, _ := cpu.Info()  //总体信息
-	fmt.Println(info)
-	return info
+	return CpuInfo{Cpus:info}
 }
 
+//type CpuInfo []cpu.InfoStat
 type CpuInfo struct {
-	cpu.InfoStat
+	Cpus []cpu.InfoStat `json:"cpus"`
 }
+

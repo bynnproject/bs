@@ -3,8 +3,8 @@ syntax = "proto3";
 package protoc ;
 
 
-service info{
-
+service Info{
+    rpc GetInfo(stream InfoReq) returns (stream InfoResp){}
 }
 
 message InfoReq {
@@ -12,37 +12,40 @@ message InfoReq {
 }
 
 message InfoResp {
-    HostsInfo Host = 1;
-    CpuInfo Cpu = 2;
-    MemoryInfo Mem = 3;
-    DiskInfo Disk = 4;
-    ProcessInfo Process = 5;
-    ConnInfo Conn = 6;
+    string Host = 1;
+    string Cpu = 2;
+    string Mem = 3;
+    string Disk = 4;
 }
 
 
-message HostsInfo {
-
-}
-
-message CpuInfo {
-
-}
-
-
-message MemoryInfo {
-
-}
-
-
-message DiskInfo {
-
-}
-
-message ProcessInfo {
-
-}
-
-message ConnInfo {
-
-}
+//message HostsInfo {
+//    string info = 1;
+//}
+//
+//message CpuInfo {
+//    string info = 1;
+//}
+//
+//
+//message MemoryInfo {
+//    string sinfo = 1;
+//    string vinfo = 2;
+//}
+//
+//
+//message DiskInfo {
+//    string info = 1;
+//    string ioinfo = 2;
+//
+//}
+//
+//message ProcessInfo {
+//    string info = 1;
+//
+//}
+//
+//message ConnInfo {
+//    string info = 1;
+//
+//}
